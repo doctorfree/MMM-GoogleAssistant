@@ -66,8 +66,29 @@ else
 fi
 
 echo
-# check dependencies
-dependencies=(wget unclutter build-essential vlc libmagic-dev libatlas-base-dev cec-utils libudev-dev)
+# Check dependencies
+# Required packages on Debian based systems
+deb_dependencies=(wget unclutter build-essential vlc libmagic-dev libatlas-base-dev cec-utils libudev-dev)
+# Required packages on RPM based systems
+rpm_dependencies=(atlas-devel file-devel file-libs vlc wget autoconf automake binutils bison flex gcc gcc-c++ glibc-devel libtool make pkgconf strace byacc ccache cscope ctags elfutils indent ltrace perf valgrind libudev-devel libcec)
+# Check dependencies
+if [ "${debian}" ]
+then
+  dependencies=( "${deb_dependencies[@]}" )
+else
+  if [ "${have_rpm}" ]
+  then
+    dependencies=( "${rpm_dependencies[@]}" )
+  else
+    if [ "${have_yum}" ]
+    then
+      dependencies=( "${rpm_dependencies[@]}" )
+    else
+      dependencies=( "${deb_dependencies[@]}" )
+    fi
+  fi
+fi
+
 Installer_info "Checking all dependencies..."
 Installer_check_dependencies
 Installer_success "All Dependencies needed are installed !"
