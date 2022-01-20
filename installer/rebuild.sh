@@ -56,7 +56,7 @@ if [ "${debian}" ]
 then
   dependencies=( "${deb_dependencies[@]}" )
 else
-  if [ "${have_rpm}" ]
+  if [ "${have_dnf}" ]
   then
     dependencies=( "${rpm_dependencies[@]}" )
   else
