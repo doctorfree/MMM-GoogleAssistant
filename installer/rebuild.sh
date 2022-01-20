@@ -68,9 +68,12 @@ else
     fi
   fi
 fi
-Installer_info "Update all dependencies..."
-Installer_update_dependencies
-Installer_success "All Dependencies needed are updated !"
+
+[ "${__NO_DEP_CHECK__}" ] || {
+  Installer_info "Update all dependencies..."
+  Installer_update_dependencies
+  Installer_success "All Dependencies needed are updated !"
+}
 
 
 cd ~/MagicMirror/modules/MMM-GoogleAssistant

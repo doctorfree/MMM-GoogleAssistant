@@ -89,9 +89,11 @@ else
   fi
 fi
 
-Installer_info "Checking all dependencies..."
-Installer_check_dependencies
-Installer_success "All Dependencies needed are installed !"
+[ "${__NO_DEP_CHECK__}" ] || {
+  Installer_info "Checking all dependencies..."
+  Installer_check_dependencies
+  Installer_success "All Dependencies needed are installed !"
+}
 
 echo
 # apply @sdetweil fix
