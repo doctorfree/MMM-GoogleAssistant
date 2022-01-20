@@ -56,7 +56,7 @@ echo
 # Required packages on Debian based systems
 deb_dependencies=(wget unclutter build-essential vlc libmagic-dev libatlas-base-dev cec-utils libudev-dev)
 # Required packages on RPM based systems
-rpm_dependencies=(atlas-static file-libs vlc wget autoconf automake binutils bison flex gcc gcc-c++ glibc-devel libtool make pkgconf strace byacc ccache cscope ctags elfutils indent ltrace perf valgrind libudev-devel libcec)
+rpm_dependencies=(blas-devel file-libs vlc wget autoconf automake binutils bison flex gcc gcc-c++ glibc-devel libtool make pkgconf strace byacc ccache cscope ctags elfutils indent ltrace perf valgrind libudev-devel libcec)
 # Check dependencies
 if [ "${debian}" ]
 then
